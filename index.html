@@ -401,11 +401,11 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Invalid login credentials / validation errors</td>
+<td>Invalid login credentials / validation errors / Invalid credentials</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Invalid credentials</td>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -453,6 +453,14 @@
 <td>400</td>
 <td>Meal exist / validation errors</td>
 </tr>
+<tr>
+<td>409</td>
+<td>You have an already exiting meal with this name</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -461,7 +469,7 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
   <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-  <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"yamegg.png"</span>
+  <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"Yangzhou-Fried-Rice1.jpg"</span>
 <span class="p">}</span>
 </code></pre>
 <blockquote>
@@ -473,7 +481,7 @@
     <span class="p">{</span>
       <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
       <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"yamegg.png"</span>
+      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"src="</span><span class="nx">https</span><span class="p">:</span><span class="c1">//res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre><h2 id='modify-meal'>Modify Meal</h2><h3 id='request-4'>Request</h3>
@@ -498,7 +506,19 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Meal Not Found / validation errors / Error processing request</td>
+<td>validation errors / Provide valid meal id</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Meal Not Found</td>
+</tr>
+<tr>
+<td>403</td>
+<td>You have no access to edit this meal</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -508,7 +528,7 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
   <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-  <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"yamegg.png"</span>
+  <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"Yangzhou-Fried-Rice1.jpg"</span>
 <span class="p">}</span>
 </code></pre>
 <blockquote>
@@ -520,7 +540,7 @@
     <span class="p">{</span>
       <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
       <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"yamegg.png"</span>
+      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre><h2 id='get-a-meal'>Get A Meal</h2><h3 id='request-5'>Request</h3>
@@ -545,7 +565,15 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Provide valid meal id / Error processing request</td>
+<td>Provide valid meal id</td>
+</tr>
+<tr>
+<td>404</td>
+<td>No meal found</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -555,10 +583,14 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Meal Details"</span><span class="p">,</span>
     <span class="s2">"meal"</span><span class="p">:</span> 
-    <span class="p">{</span>
-      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
-      <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"yamegg.png"</span>
+      <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Pap and akara"</span><span class="p">,</span>
+            <span class="s2">"price"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg"</span><span class="p">,</span>
+            <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span><span class="p">,</span>
+            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre><h2 id='delete-a-meal'>Delete A Meal</h2><h3 id='request-6'>Request</h3>
@@ -583,7 +615,19 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Provide valid meal id / You have no access to edit this meal / Error processing request</td>
+<td>Provide valid meal id</td>
+</tr>
+<tr>
+<td>403</td>
+<td>You have no access to edit this meal</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Meal not found</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -614,8 +658,12 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>No meal found / Error processing request</td>
+<td>404</td>
+<td>No meal found</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -624,13 +672,32 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"All meals displayed"</span><span class="p">,</span>
+    <span class="s2">"paginate"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"itemCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"currentPage"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"offset"</span><span class="p">:</span> <span class="s2">"0"</span>
+    <span class="p">},</span>
     <span class="s2">"meals"</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">"meal"</span><span class="p">:</span> 
-      <span class="p">{</span>
-        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
-        <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-        <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"yamegg.png"</span>
-      <span class="p">}</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Pap and akara"</span><span class="p">,</span>
+            <span class="s2">"price"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg"</span><span class="p">,</span>
+            <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span><span class="p">,</span>
+            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Ewedu and Gbegiri"</span><span class="p">,</span>
+            <span class="s2">"price"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535903918/BookMeal/1535903912860pexels-photo-247685.png.png"</span><span class="p">,</span>
+            <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-09-02T15:58:38.597Z"</span><span class="p">,</span>
+            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-09-02T15:58:38.597Z"</span>
+        <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre><h1 id='menu'>Menu</h1><h2 id='set-menu'>Set Menu</h2><h3 id='request-8'>Request</h3>
@@ -654,8 +721,12 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>No meal found / Error processing request</td>
+<td>404</td>
+<td>No meal found</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -707,7 +778,11 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>The Date must be of format YYYY-MM-DD / Error processing request</td>
+<td>The Date must be of format YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -716,6 +791,8 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"menuDate"</span><span class="p">:</span> <span class="s2">"2018-07-15"</span>
+  <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="s2">"offset"</span><span class="p">:</span> <span class="mi">0</span>
 <span class="p">}</span>
 </code></pre>
 <blockquote>
@@ -723,6 +800,13 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Menu for this Date"</span><span class="p">,</span>
+  <span class="s2">"paginate"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"itemCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"currentPage"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+        <span class="s2">"offset"</span><span class="p">:</span> <span class="s2">"0"</span>
+    <span class="p">},</span>
     <span class="s2">"dateMenu"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -769,7 +853,15 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>This meal is not on this menu / Error processing request / validation errors</td>
+<td>validation errors</td>
+</tr>
+<tr>
+<td>404</td>
+<td>This meal is not on this menu</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -822,7 +914,19 @@
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>This Order does not belong to this user / Error processing request / This meal is not on this menu / validation errors</td>
+<td>validation errors</td>
+</tr>
+<tr>
+<td>404</td>
+<td>This meal is not on this menu</td>
+</tr>
+<tr>
+<td>403</td>
+<td>This Order does not belong to this user</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -872,8 +976,12 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Order does not exist / Error processing request</td>
+<td>404</td>
+<td>Order does not exist</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Error processing request</td>
 </tr>
 </tbody></table>
 
@@ -883,6 +991,13 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
 
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Order details"</span><span class="p">,</span>
+    <span class="s2">"paginate"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"itemCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"currentPage"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+        <span class="s2">"offset"</span><span class="p">:</span> <span class="s2">"0"</span>
+    <span class="p">},</span>
     <span class="s2">"order"</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
         <span class="s2">"mealId"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -940,6 +1055,13 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Orders gotten successfully"</span><span class="p">,</span>
+    <span class="s2">"paginate"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"itemCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"currentPage"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"10"</span><span class="p">,</span>
+        <span class="s2">"offset"</span><span class="p">:</span> <span class="s2">"0"</span>
+    <span class="p">},</span>
     <span class="s2">"orders"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -1022,6 +1144,13 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"All Orders"</span><span class="p">,</span>
+    <span class="s2">"paginate"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"itemCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"currentPage"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"10"</span><span class="p">,</span>
+        <span class="s2">"offset"</span><span class="p">:</span> <span class="s2">"0"</span>
+    <span class="p">},</span>
     <span class="s2">"orders"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
