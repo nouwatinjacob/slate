@@ -117,8 +117,8 @@ POST ```https://book-a-meal-v1.herokuapp.com/api/v1/auth/login```
 ###Response codes when error occurs on sign in
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | Invalid login credentials / validation errors 
-404 | Invalid credentials 
+400 | Invalid login credentials / validation errors / Invalid credentials
+500 |  Error processing request
 
 
 > Request:
@@ -165,6 +165,8 @@ POST ```https://book-a-meal-v1.herokuapp.com/api/v1/meals```
 HTTP Status Code | Message 
 -------------- | -------------- 
 400 | Meal exist / validation errors
+409 | You have an already exiting meal with this name
+500 | Error processing request
 
 > Request:
 
@@ -172,7 +174,7 @@ HTTP Status Code | Message
 {
   "name": "Yam and Egg",
   "price": "2000",
-  "image": "yamegg.png"
+  "image": "Yangzhou-Fried-Rice1.jpg"
 }
 ````
 > Response:
@@ -184,7 +186,7 @@ HTTP Status Code | Message
     {
       "name": "Yam and Egg",
       "price": "2000",
-      "image": "yamegg.png"
+      "image": "src="https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"
     }
 }
 ```
@@ -208,7 +210,10 @@ PUT ```https://book-a-meal-v1.herokuapp.com/api/v1/meals```
 ###Response codes when error occurs on modify meal
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | Meal Not Found / validation errors / Error processing request
+400 | validation errors / Provide valid meal id
+404 | Meal Not Found
+403 | You have no access to edit this meal
+500 | Error processing request
 
 > Request:
 
@@ -216,7 +221,7 @@ HTTP Status Code | Message
 {
   "name": "Yam and Egg",
   "price": "2000",
-  "image": "yamegg.png"
+  "image": "Yangzhou-Fried-Rice1.jpg"
 }
 ````
 > Response:
@@ -228,7 +233,7 @@ HTTP Status Code | Message
     {
       "name": "Yam and Egg",
       "price": "2000",
-      "image": "yamegg.png"
+      "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"
     }
 }
 ```
@@ -252,7 +257,9 @@ GET ```https://book-a-meal-v1.herokuapp.com/api/v1/meals/:id```
 ###Response codes when error occurs on get a meal
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | Provide valid meal id / Error processing request
+400 | Provide valid meal id
+404 | No meal found
+500 | Error processing request
 
 > Response:
 
@@ -260,10 +267,14 @@ HTTP Status Code | Message
 {
     "message": "Meal Details",
     "meal": 
-    {
-      "name": "Yam and Egg",
-      "price": "2000",
-      "image": "yamegg.png"
+      {
+            "id": 2,
+            "name": "Pap and akara",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg",
+            "userId": 1,
+            "createdAt": "2018-09-01T13:58:01.191Z",
+            "updatedAt": "2018-09-01T13:58:01.191Z"
     }
 }
 ```
@@ -287,7 +298,10 @@ DELETE ```https://book-a-meal-v1.herokuapp.com/api/v1/meals:id```
 ###Response codes when error occurs on delete a meal
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | Provide valid meal id / You have no access to edit this meal / Error processing request
+400 | Provide valid meal id
+403 | You have no access to edit this meal
+404 | Meal not found
+500 | Error processing request
 
 > Response:
 
@@ -316,20 +330,40 @@ GET ```https://book-a-meal-v1.herokuapp.com/api/v1/meals```
 ###Response codes when error occurs on get a get a caterer meals
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | No meal found / Error processing request
+404 | No meal found 
+500 | Error processing request
 
 > Response:
 
 ```javascript
 {
     "message": "All meals displayed",
+    "paginate": {
+        "page": 1,
+        "itemCount": 2,
+        "currentPage": 1,
+        "limit": "2",
+        "offset": "0"
+    },
     "meals": [
-      "meal": 
-      {
-        "name": "Yam and Egg",
-        "price": "2000",
-        "image": "yamegg.png"
-      }
+        {
+            "id": 2,
+            "name": "Pap and akara",
+            "price": 2000,
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg",
+            "userId": 1,
+            "createdAt": "2018-09-01T13:58:01.191Z",
+            "updatedAt": "2018-09-01T13:58:01.191Z"
+        },
+        {
+            "id": 3,
+            "name": "Ewedu and Gbegiri",
+            "price": 1500,
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535903918/BookMeal/1535903912860pexels-photo-247685.png.png",
+            "userId": 1,
+            "createdAt": "2018-09-02T15:58:38.597Z",
+            "updatedAt": "2018-09-02T15:58:38.597Z"
+        }
     ]
 }
 ````
@@ -355,7 +389,8 @@ POST ```https://book-a-meal-v1.herokuapp.com/api/v1/menu```
 ###Response codes when error occurs on set menu
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | No meal found / Error processing request
+404 | No meal found
+500 | Error processing request
 
 > Request:
 
@@ -406,13 +441,16 @@ GET ```https://book-a-meal-v1.herokuapp.com/api/v1/menu```
 ###Response codes when error occurs on get menu
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | The Date must be of format YYYY-MM-DD / Error processing request
+400 | The Date must be of format YYYY-MM-DD
+500 | Error processing request
 
 > Request:
 
 ```javascript
 {
   "menuDate": "2018-07-15"
+  "limit": 12,
+  "offset": 0
 }
 ````
 
@@ -421,6 +459,13 @@ HTTP Status Code | Message
 ```javascript
 {
   "message": "Menu for this Date",
+  "paginate": {
+        "page": 1,
+        "itemCount": 2,
+        "currentPage": 1,
+        "limit": "12",
+        "offset": "0"
+    },
     "dateMenu": [
         {
             "id": 1,
@@ -469,7 +514,9 @@ POST ```https://book-a-meal-v1.herokuapp.com/api/v1/orders```
 ###Response codes when error occurs on make order
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | This meal is not on this menu / Error processing request / validation errors
+400 | validation errors
+404 | This meal is not on this menu 
+500 | Error processing request
 
 > Request:
 
@@ -521,7 +568,10 @@ PUT ```https://book-a-meal-v1.herokuapp.com/api/v1/orders/:id```
 ###Response codes when error occurs on modify an order
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | This Order does not belong to this user / Error processing request / This meal is not on this menu / validation errors
+400 | validation errors
+404 | This meal is not on this menu
+403 | This Order does not belong to this user
+500 | Error processing request
 
 > Request:
 
@@ -571,7 +621,8 @@ GET ```https://book-a-meal-v1.herokuapp.com/api/v1/orders/:id```
 ###Response codes when error occurs on get an order
 HTTP Status Code | Message 
 -------------- | -------------- 
-400 | Order does not exist / Error processing request 
+404 | Order does not exist
+500 | Error processing request 
 
 > Response:
 
@@ -579,6 +630,13 @@ HTTP Status Code | Message
 {
   
     "message": "Order details",
+    "paginate": {
+        "page": 1,
+        "itemCount": 2,
+        "currentPage": 1,
+        "limit": "12",
+        "offset": "0"
+    },
     "order": {
         "id": 3,
         "mealId": 2,
@@ -634,6 +692,13 @@ HTTP Status Code | Message
 ```javascript
 {
     "message": "Orders gotten successfully",
+    "paginate": {
+        "page": 1,
+        "itemCount": 2,
+        "currentPage": 1,
+        "limit": "10",
+        "offset": "0"
+    },
     "orders": [
         {
             "id": 2,
@@ -714,6 +779,13 @@ HTTP Status Code | Message
 ```javascript
 {
     "message": "All Orders",
+    "paginate": {
+        "page": 1,
+        "itemCount": 2,
+        "currentPage": 1,
+        "limit": "10",
+        "offset": "0"
+    },
     "orders": [
         {
             "id": 2,
