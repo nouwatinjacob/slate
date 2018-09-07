@@ -81,6 +81,7 @@ POST ```https://book-a-meal-v1.herokuapp.com/api/v1/auth/signup```
   "userType": "caterer"
 }
 ````
+
 > Caterer Response:
 
 ```javascript
@@ -186,7 +187,7 @@ HTTP Status Code | Message
     {
       "name": "Yam and Egg",
       "price": "2000",
-      "image": "src="https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"
+      "image":"https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"
     }
 }
 ```
@@ -233,10 +234,10 @@ HTTP Status Code | Message
     {
       "name": "Yam and Egg",
       "price": "2000",
-      "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"
+      "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg"
     }
 }
-```
+````
 
 ## Get A Meal
 
@@ -271,13 +272,13 @@ HTTP Status Code | Message
             "id": 2,
             "name": "Pap and akara",
             "price": 2000,
-            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg",
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg",
             "userId": 1,
             "createdAt": "2018-09-01T13:58:01.191Z",
             "updatedAt": "2018-09-01T13:58:01.191Z"
     }
 }
-```
+````
 
 ## Delete A Meal
 
@@ -333,6 +334,15 @@ HTTP Status Code | Message
 404 | No meal found 
 500 | Error processing request
 
+> Request:
+
+```javascript
+{
+  "limit": 12,
+  "offset": 0
+}
+````
+
 > Response:
 
 ```javascript
@@ -342,7 +352,7 @@ HTTP Status Code | Message
         "page": 1,
         "itemCount": 2,
         "currentPage": 1,
-        "limit": "2",
+        "limit": "10",
         "offset": "0"
     },
     "meals": [
@@ -350,7 +360,7 @@ HTTP Status Code | Message
             "id": 2,
             "name": "Pap and akara",
             "price": 2000,
-            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg",
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg",
             "userId": 1,
             "createdAt": "2018-09-01T13:58:01.191Z",
             "updatedAt": "2018-09-01T13:58:01.191Z"
@@ -359,7 +369,7 @@ HTTP Status Code | Message
             "id": 3,
             "name": "Ewedu and Gbegiri",
             "price": 1500,
-            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535903918/BookMeal/1535903912860pexels-photo-247685.png.png",
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1535903918/BookMeal/1535903912860pexels-photo-247685.png",
             "userId": 1,
             "createdAt": "2018-09-02T15:58:38.597Z",
             "updatedAt": "2018-09-02T15:58:38.597Z"
@@ -397,7 +407,7 @@ HTTP Status Code | Message
 ```javascript
 {
   "menuDate": "2018-06-15",
-  "mealId": [5]
+  "mealId": [5,2]
 }
 ````
 
@@ -418,7 +428,16 @@ HTTP Status Code | Message
             "id": 5,
             "name": "Akamu and Akara",
             "price": 2500,
-            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1530594643/BookMeal/1530594641558pexels-photo-247685.png.png",
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1530594643/BookMeal/1530594641558pexels-photo-247685.png",
+            "userId": 2,
+            "createdAt": "2018-07-03T05:10:44.356Z",
+            "updatedAt": "2018-07-03T05:10:44.356Z"
+        },
+        {
+            "id": 2,
+            "name": "Fried Rice and Chicken",
+            "price": 1500,
+            "image": "https://res.cloudinary.com/sansaristic/image/upload/v1530594643/BookMeal/1530594641558friedrice.png",
             "userId": 2,
             "createdAt": "2018-07-03T05:10:44.356Z",
             "updatedAt": "2018-07-03T05:10:44.356Z"
@@ -630,13 +649,6 @@ HTTP Status Code | Message
 {
   
     "message": "Order details",
-    "paginate": {
-        "page": 1,
-        "itemCount": 2,
-        "currentPage": 1,
-        "limit": "12",
-        "offset": "0"
-    },
     "order": {
         "id": 3,
         "mealId": 2,
@@ -657,15 +669,10 @@ HTTP Status Code | Message
         "User": {
             "id": 1,
             "email": "kareem@gmail.com",
-            "password": "$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty",
             "firstName": "Kareem",
             "lastName": "Aderobigbe",
-            "businessName": null,
             "ownerName": null,
-            "businessAddress": null,
             "userType": "customer",
-            "createdAt": "2018-07-15T21:31:52.862Z",
-            "updatedAt": "2018-07-15T21:31:52.862Z"
         }
     }
 }
@@ -686,6 +693,15 @@ GET ```https://book-a-meal-v1.herokuapp.com/api/v1/user-orders```
 HTTP Status Code | Message 
 -------------- | -------------- 
 400 | Error processing request 
+
+> Request:
+
+```javascript
+{
+  "limit": 10,
+  "offset": 0
+}
+````
 
 > Response:
 
@@ -730,7 +746,7 @@ HTTP Status Code | Message
                 "id": 2,
                 "name": "Beans and Garri",
                 "price": 1500,
-                "image": "https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png.png",
+                "image": "https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png",
                 "userId": 2,
                 "createdAt": "2018-07-15T21:40:55.256Z",
                 "updatedAt": "2018-07-15T21:40:55.256Z"
@@ -748,7 +764,7 @@ HTTP Status Code | Message
                 "id": 2,
                 "name": "Beans and Garri",
                 "price": 1500,
-                "image": "https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png.png",
+                "image": "https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png",
                 "userId": 2,
                 "createdAt": "2018-07-15T21:40:55.256Z",
                 "updatedAt": "2018-07-15T21:40:55.256Z"
@@ -807,15 +823,10 @@ HTTP Status Code | Message
             "User": {
                 "id": 1,
                 "email": "kareem@gmail.com",
-                "password": "$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty",
                 "firstName": "Kareem",
                 "lastName": "Aderobigbe",
-                "businessName": null,
                 "ownerName": null,
-                "businessAddress": null,
                 "userType": "customer",
-                "createdAt": "2018-07-15T21:31:52.862Z",
-                "updatedAt": "2018-07-15T21:31:52.862Z"
             }
         },
         {
@@ -838,15 +849,10 @@ HTTP Status Code | Message
             "User": {
                 "id": 1,
                 "email": "kareem@gmail.com",
-                "password": "$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty",
                 "firstName": "Kareem",
                 "lastName": "Aderobigbe",
-                "businessName": null,
                 "ownerName": null,
-                "businessAddress": null,
                 "userType": "customer",
-                "createdAt": "2018-07-15T21:31:52.862Z",
-                "updatedAt": "2018-07-15T21:31:52.862Z"
             }
         },
         {
@@ -869,15 +875,10 @@ HTTP Status Code | Message
             "User": {
                 "id": 1,
                 "email": "kareem@gmail.com",
-                "password": "$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty",
                 "firstName": "Kareem",
                 "lastName": "Aderobigbe",
-                "businessName": null,
                 "ownerName": null,
-                "businessAddress": null,
-                "userType": "customer",
-                "createdAt": "2018-07-15T21:31:52.862Z",
-                "updatedAt": "2018-07-15T21:31:52.862Z"
+                "userType": "customer"
             }
         }
     ]
