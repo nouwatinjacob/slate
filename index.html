@@ -481,7 +481,7 @@
     <span class="p">{</span>
       <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
       <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"src="</span><span class="nx">https</span><span class="p">:</span><span class="c1">//res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"</span>
+      <span class="s2">"image"</span><span class="p">:</span><span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre><h2 id='modify-meal'>Modify Meal</h2><h3 id='request-4'>Request</h3>
@@ -540,7 +540,7 @@
     <span class="p">{</span>
       <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Yam and Egg"</span><span class="p">,</span>
       <span class="s2">"price"</span><span class="p">:</span> <span class="s2">"2000"</span><span class="p">,</span>
-      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg.jpg"</span>
+      <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535932168/BookMeal/1535932166560Yangzhou-Fried-Rice1.jpg"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre><h2 id='get-a-meal'>Get A Meal</h2><h3 id='request-5'>Request</h3>
@@ -587,7 +587,7 @@
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Pap and akara"</span><span class="p">,</span>
             <span class="s2">"price"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
-            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg"</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg"</span><span class="p">,</span>
             <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span><span class="p">,</span>
             <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span>
@@ -668,6 +668,14 @@
 </tbody></table>
 
 <blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="s2">"offset"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
 <p>Response:</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
@@ -676,7 +684,7 @@
         <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
         <span class="s2">"itemCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="s2">"currentPage"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"10"</span><span class="p">,</span>
         <span class="s2">"offset"</span><span class="p">:</span> <span class="s2">"0"</span>
     <span class="p">},</span>
     <span class="s2">"meals"</span><span class="p">:</span> <span class="p">[</span>
@@ -684,7 +692,7 @@
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Pap and akara"</span><span class="p">,</span>
             <span class="s2">"price"</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
-            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg.jpg"</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535810280/BookMeal/1535810270267Yangzhou-Fried-Rice1.jpg"</span><span class="p">,</span>
             <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span><span class="p">,</span>
             <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-09-01T13:58:01.191Z"</span>
@@ -693,7 +701,7 @@
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
             <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Ewedu and Gbegiri"</span><span class="p">,</span>
             <span class="s2">"price"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
-            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535903918/BookMeal/1535903912860pexels-photo-247685.png.png"</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1535903918/BookMeal/1535903912860pexels-photo-247685.png"</span><span class="p">,</span>
             <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-09-02T15:58:38.597Z"</span><span class="p">,</span>
             <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-09-02T15:58:38.597Z"</span>
@@ -735,7 +743,7 @@
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
   <span class="s2">"menuDate"</span><span class="p">:</span> <span class="s2">"2018-06-15"</span><span class="p">,</span>
-  <span class="s2">"mealId"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+  <span class="s2">"mealId"</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre>
 <blockquote>
@@ -755,7 +763,16 @@
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
             <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Akamu and Akara"</span><span class="p">,</span>
             <span class="s2">"price"</span><span class="p">:</span> <span class="mi">2500</span><span class="p">,</span>
-            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1530594643/BookMeal/1530594641558pexels-photo-247685.png.png"</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1530594643/BookMeal/1530594641558pexels-photo-247685.png"</span><span class="p">,</span>
+            <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-03T05:10:44.356Z"</span><span class="p">,</span>
+            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-03T05:10:44.356Z"</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Fried Rice and Chicken"</span><span class="p">,</span>
+            <span class="s2">"price"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
+            <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1530594643/BookMeal/1530594641558friedrice.png"</span><span class="p">,</span>
             <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-03T05:10:44.356Z"</span><span class="p">,</span>
             <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-03T05:10:44.356Z"</span>
@@ -991,13 +1008,6 @@
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
 
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Order details"</span><span class="p">,</span>
-    <span class="s2">"paginate"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">"itemCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s2">"currentPage"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">"limit"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
-        <span class="s2">"offset"</span><span class="p">:</span> <span class="s2">"0"</span>
-    <span class="p">},</span>
     <span class="s2">"order"</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
         <span class="s2">"mealId"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -1018,15 +1028,10 @@
         <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"kareem@gmail.com"</span><span class="p">,</span>
-            <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty"</span><span class="p">,</span>
             <span class="s2">"firstName"</span><span class="p">:</span> <span class="s2">"Kareem"</span><span class="p">,</span>
             <span class="s2">"lastName"</span><span class="p">:</span> <span class="s2">"Aderobigbe"</span><span class="p">,</span>
-            <span class="s2">"businessName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
             <span class="s2">"ownerName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-            <span class="s2">"businessAddress"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
             <span class="s2">"userType"</span><span class="p">:</span> <span class="s2">"customer"</span><span class="p">,</span>
-            <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span><span class="p">,</span>
-            <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -1050,6 +1055,14 @@
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="s2">"offset"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre>
 <blockquote>
 <p>Response:</p>
 </blockquote>
@@ -1093,7 +1106,7 @@
                 <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
                 <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Beans and Garri"</span><span class="p">,</span>
                 <span class="s2">"price"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
-                <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png.png"</span><span class="p">,</span>
+                <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png"</span><span class="p">,</span>
                 <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
                 <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:40:55.256Z"</span><span class="p">,</span>
                 <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:40:55.256Z"</span>
@@ -1111,7 +1124,7 @@
                 <span class="s2">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
                 <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Beans and Garri"</span><span class="p">,</span>
                 <span class="s2">"price"</span><span class="p">:</span> <span class="mi">1500</span><span class="p">,</span>
-                <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png.png"</span><span class="p">,</span>
+                <span class="s2">"image"</span><span class="p">:</span> <span class="s2">"https://res.cloudinary.com/sansaristic/image/upload/v1531690854/BookMeal/1531690851816pexels-photo-247685.png"</span><span class="p">,</span>
                 <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
                 <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:40:55.256Z"</span><span class="p">,</span>
                 <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:40:55.256Z"</span>
@@ -1172,15 +1185,10 @@
             <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                 <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"kareem@gmail.com"</span><span class="p">,</span>
-                <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty"</span><span class="p">,</span>
                 <span class="s2">"firstName"</span><span class="p">:</span> <span class="s2">"Kareem"</span><span class="p">,</span>
                 <span class="s2">"lastName"</span><span class="p">:</span> <span class="s2">"Aderobigbe"</span><span class="p">,</span>
-                <span class="s2">"businessName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
                 <span class="s2">"ownerName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-                <span class="s2">"businessAddress"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
                 <span class="s2">"userType"</span><span class="p">:</span> <span class="s2">"customer"</span><span class="p">,</span>
-                <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span><span class="p">,</span>
-                <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span>
             <span class="p">}</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -1203,15 +1211,10 @@
             <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                 <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"kareem@gmail.com"</span><span class="p">,</span>
-                <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty"</span><span class="p">,</span>
                 <span class="s2">"firstName"</span><span class="p">:</span> <span class="s2">"Kareem"</span><span class="p">,</span>
                 <span class="s2">"lastName"</span><span class="p">:</span> <span class="s2">"Aderobigbe"</span><span class="p">,</span>
-                <span class="s2">"businessName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
                 <span class="s2">"ownerName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-                <span class="s2">"businessAddress"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
                 <span class="s2">"userType"</span><span class="p">:</span> <span class="s2">"customer"</span><span class="p">,</span>
-                <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span><span class="p">,</span>
-                <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span>
             <span class="p">}</span>
         <span class="p">},</span>
         <span class="p">{</span>
@@ -1234,15 +1237,10 @@
             <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
                 <span class="s2">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                 <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"kareem@gmail.com"</span><span class="p">,</span>
-                <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"$2a$10$VnVPQvRwb0OTj4PlLEK9xer44ozFLj0PeuYNBkSJieGcl0wfrIlty"</span><span class="p">,</span>
                 <span class="s2">"firstName"</span><span class="p">:</span> <span class="s2">"Kareem"</span><span class="p">,</span>
                 <span class="s2">"lastName"</span><span class="p">:</span> <span class="s2">"Aderobigbe"</span><span class="p">,</span>
-                <span class="s2">"businessName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
                 <span class="s2">"ownerName"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-                <span class="s2">"businessAddress"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-                <span class="s2">"userType"</span><span class="p">:</span> <span class="s2">"customer"</span><span class="p">,</span>
-                <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span><span class="p">,</span>
-                <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2018-07-15T21:31:52.862Z"</span>
+                <span class="s2">"userType"</span><span class="p">:</span> <span class="s2">"customer"</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">]</span>
